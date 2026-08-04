@@ -2,9 +2,8 @@ package routers
 
 func getModelsReq() {
 	type Models struct {
-		Url  string
+		URL  string
 		Key  string
 		User string
 	}
-
 }
