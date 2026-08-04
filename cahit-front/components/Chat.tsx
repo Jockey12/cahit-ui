@@ -2,13 +2,14 @@
 
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import ChatInput from "@/components/ChatInput";
 import MessageList from "@/components/MessageList";
 import { Message } from "@/components/types/chat";
 
 export default function Chat() {
   const [messages, setMessages] = useState<Message[]>([]);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
 
   function send(message: string) {
     setMessages((prev) => [
@@ -22,13 +23,13 @@ export default function Chat() {
     // fetch ("http://localhost:8080/chat")
   }
   return (
-    <div className="flex h-screen flex-col overflow-hidden">
+    <div className="flex min-h-[calc(100dvh-4rem)] flex-col">
       {/*messages*/}
-      <main className="flex-1 overflow-y-auto p-4">
+      <main className="flex-1 p-2">
         <MessageList messages={messages} />
       </main>
       {/*input*/}
-      <footer className="bg-background border-t p-2">
+      <footer className="sticky bg-background bottom-0 z-10 border-t p-2">
         <ChatInput onSend={send} />
       </footer>
     </div>

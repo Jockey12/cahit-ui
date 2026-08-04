@@ -9,11 +9,11 @@ export default function DashboardLayout({
   return (
     <SidebarProvider>
       <AppSidebar />
-      <main className="flex-1">
-        <header className="border-b h-16 flex items-center px-4">
-          <SidebarTrigger className="-ml-1 flex" />
+      <main className="flex-1 h-dvh overflow-y-auto min-h-0">
+        <header className="sticky bg-background border-b top-0 z-30 shrink-0 h-16 flex items-center px-4">
+          <SidebarTrigger className="-ml-1" />
         </header>
-        <div className="p-6">{children}</div>
+        <div className="p-4">{children}</div>
       </main>
     </SidebarProvider>
   );
