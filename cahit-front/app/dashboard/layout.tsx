@@ -11,8 +11,7 @@ export default function DashboardLayout({
       <AppSidebar />
       <main className="flex-1">
         <header className="border-b h-16 flex items-center px-4">
-          <SidebarTrigger className="-ml-1" />
-          test
+          <SidebarTrigger className="-ml-1 flex" />
         </header>
         <div className="p-6">{children}</div>
       </main>
