@@ -1,6 +1,6 @@
 package routers
 
-func getModelsReq() {
+func GetModelsReq() {
 	type Models struct {
 		URL  string
 		Key  string

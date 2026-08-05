@@ -6,12 +6,14 @@ import { useRef, useState } from "react";
 import ChatInput from "@/components/ChatInput";
 import MessageList from "@/components/MessageList";
 import { Message } from "@/components/types/chat";
+import { sendMessage } from "@/lib/chat";
 
 export default function Chat() {
   const [messages, setMessages] = useState<Message[]>([]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  function send(message: string) {
+  async function send(message: string) {
+    // send LLM input
     setMessages((prev) => [
       ...prev,
       {
@@ -19,8 +21,27 @@ export default function Chat() {
         content: message,
       },
     ]);
+    // fetch the LLM response
+    await fetch("http://localhost:8080/chat", {
+      method: "POST",
+      body: JSON.stringify({
+        prompt: message,
+      }),
+    });
 
-    // fetch ("http://localhost:8080/chat")
+    // try getting LLM response
+    try {
+      const data = await sendMessage(message);
+      setMessages((prev) => [
+        ...prev,
+        {
+          role: "assistant",
+          content: data.response,
+        },
+      ]);
+    } catch (err) {
+      console.error(err);
+    }
   }
   return (
     <div className="flex min-h-[calc(100dvh-4rem)] flex-col">

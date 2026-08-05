@@ -1,8 +1,13 @@
-export default function settingsPage() {
+export default function SettingsPage() {
   return (
-    <div className="items-center text-2xl">
-      <h1> Settings </h1>
-      settings
-    </div>
+    <main>
+      <div className="justify-items-center text-2xl">
+        <h1> Settings </h1>
+        <span>Option</span>
+      </div>
+      <div className="text-1xl">
+        <h2>Hello</h2>
+      </div>
+    </main>
   );
 }

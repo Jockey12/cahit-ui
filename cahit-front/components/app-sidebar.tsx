@@ -57,14 +57,14 @@ export function AppSidebar() {
           <div className="h-8 w-8 rounded-full bg-primary text-white flex items-center justify-center">
             <Image
               className="dark:invert"
-              src="/vercel.svg"
-              alt="Icon"
-              width={10}
-              height={10}
+              src="/ThemeSelector.svg"
+              alt="Change theme"
+              width={22}
+              height={22}
               priority
             />
           </div>
-          <span>User</span>
+          <span>Theme</span>
         </button>
       </SidebarFooter>
     </Sidebar>
