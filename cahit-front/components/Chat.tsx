@@ -2,7 +2,7 @@
 
 "use client";
 
-import { useRef, useState } from "react";
+import { useState } from "react";
 import ChatInput from "@/components/ChatInput";
 import MessageList from "@/components/MessageList";
 import { Message } from "@/components/types/chat";
@@ -10,7 +10,7 @@ import { sendMessage } from "@/lib/chat";
 
 export default function Chat() {
   const [messages, setMessages] = useState<Message[]>([]);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
+  // const messagesEndRef = useRef<HTMLDivElement>(null);
 
   async function send(message: string) {
     // send LLM input
@@ -31,6 +31,7 @@ export default function Chat() {
 
     // try getting LLM response
     try {
+      console.log("hi");
       const data = await sendMessage(message);
       setMessages((prev) => [
         ...prev,

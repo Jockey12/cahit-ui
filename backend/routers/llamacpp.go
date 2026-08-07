@@ -4,30 +4,39 @@ package routers
 import (
 	"bytes"
 	"encoding/json"
+	"fmt"
 	"io"
 	"net/http"
 )
 
+type Message struct {
+	Role    string `json:"role"`
+	Content string `json:"content"`
+}
+
 type ChatRequest struct {
-	Model    string `json:"model"`
-	Messages []struct {
-		Role    string `json:"role"`
-		Content string `json:"content"`
-	} `json:"messages"`
+	Model    string    `json:"model"`
+	Messages []Message `json:"messages"`
+}
+
+type Choice struct {
+	Message Message `json:"message"`
 }
 
 type ChatResponse struct {
-	Choices []struct {
-		Message struct {
-			Content string `json:"content`
-		} `json:"message"`
-	} `json:"choices`
+	Choices []Choice `json:"choices"`
 }
 
 func GetRequest(prompt string) (string, error) {
-	model := ""
+	model := "local2"
 	reqBody := ChatRequest{
 		Model: model,
+		Messages: []Message{
+			{
+				Role:    "user",
+				Content: prompt,
+			},
+		},
 	}
 	reqBody.Messages = append(reqBody.Messages, struct {
 		Role    string `json:"role"`
@@ -58,6 +67,9 @@ func GetRequest(prompt string) (string, error) {
 	var chatResp ChatResponse
 	if err := json.Unmarshal(data, &chatResp); err != nil {
 		return "", err
+	}
+	if len(chatResp.Choices) == 0 {
+		return "", fmt.Errorf("no choices returned")
 	}
 
 	return chatResp.Choices[0].Message.Content, nil
