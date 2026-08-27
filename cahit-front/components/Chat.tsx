@@ -11,7 +11,7 @@ import { sendMessage } from "@/lib/chat";
 export default function Chat() {
   const [messages, setMessages] = useState<Message[]>([]);
   // const messagesEndRef = useRef<HTMLDivElement>(null);
-
+  // TODO: Need connection with DB
   async function send(message: string) {
     // send LLM input
     setMessages((prev) => [
