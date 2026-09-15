@@ -4,5 +4,6 @@ const nextConfig: NextConfig = {/* config options here */};
 module.exports = {
   allowedDevOrigins: ["local-origin.dev", "*.local-origin.dev"],
   crossOrigin: "anonymous",
+  turbopackRoot: "./",
 };
 export default nextConfig;
