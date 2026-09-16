@@ -1,3 +1,12 @@
+CREATE TABLE settings (
+  id SERIAL PRIMARY KEY,
+  username TEXT NOT NULL DEFAULT 'cahit',
+  hostname TEXT,
+  database_name TEXT NOT NULL DEFAULT 'cahit_llm',
+  password TEXT,
+  port INTEGER NOT NULL DEFAULT 5432,
+);
+
 CREATE TABLE conversations (
   id SERIAL PRIMARY KEY,
   title TEXT NOT NULL DEFAULT 'New Conversation',
