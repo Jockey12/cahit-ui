@@ -3,15 +3,18 @@
 ## Front-end for LLMs
 
 Start by:
-Run LLM server
+Run LLM server via llama.cpp ... etc.
 
 ```bash
-cd backend
-go run main.go
+$ cd backend
+$ bun install // npm install
 ```
 
 ```bash
-cd cahit-front
-npm install
-npm run dev
+$ cd cahit-front
+$ bun install // npm install
+```
+
+```bash
+$ python3 start.py
 ```
