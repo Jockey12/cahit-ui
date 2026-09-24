@@ -1,5 +1,5 @@
 export async function sendMessage(prompt: string) {
-  const res = await fetch("http://localhost:8080/chat", {
+  const res = await fetch("http://localhost:8079/chat", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

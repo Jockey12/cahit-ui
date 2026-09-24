@@ -15,12 +15,16 @@
   },
   "license": "MIT",
   "author": "Jockey",
-  "type": "commonjs",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "bun index.js"
   },
   "dependencies": {
-    "express": "^5.2.1"
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.1",
+    "express": "^5.2.1",
+    "http-proxy-middleware": "^4.2.0",
+    "pg": "^8.23.0"
   }
 }
